@@ -1,6 +1,4 @@
 import React, { useContext } from "react";
-import { AuthContext } from "../context/AuthContextProvider";
-import "./Login.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import {
   FormControl,
@@ -8,13 +6,59 @@ import {
   Input,
   Button,
   useToast,
+  Text,
 } from "@chakra-ui/react"; // Assuming you're using Chakra UI for styling
 import { useNavigate } from "react-router-dom";
+import "./Login.css";
+import axios from "axios";
+import { AuthContext } from "../context/AuthContextProvider";
 
 function Login() {
-  const { login } = useContext(AuthContext);
+  
+  const {isAuth,setIsAuth} = useContext(AuthContext)
+
   const toast = useToast();
   const navigate = useNavigate();
+
+  const handleSubmit = async (values, { setSubmitting }) => {
+    // console.log("Form Data:", values);
+    try {
+      const response = await axios.post("https://reqres.in/api/login", values);
+      console.log("Response:", response.data.token);
+
+      if (response.status === 200) {
+        toast({
+          title: "Login Successful",
+          description: "You have successfully logged in!",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        });
+        navigate("/");
+        setIsAuth(!isAuth);
+        localStorage.setItem("token", response.data.token);
+      } else {
+        toast({
+          title: "Login Failed",
+          description: "Invalid email or password. Please try again.",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        });
+      }
+    } catch (error) {
+      console.error("Login Error:", error);
+      toast({
+        title: "Login Failed",
+        description: "An error occurred during login. Please try again later.",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+    }
+    setSubmitting(false);
+  };
+
   return (
     <Formik
       initialValues={{ email: "", password: "" }}
@@ -32,28 +76,22 @@ function Login() {
         }
         return errors;
       }}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          console.log(values);
-          setSubmitting(false);
-          toast({
-            title: "Login Successful",
-            status: "success",
-            duration: 5000,
-            isClosable: true,
-          });
-          login();
-          navigate("/");
-        }, 400);
-      }}>
+      onSubmit={handleSubmit}>
       {({ isSubmitting }) => (
         <Form className="LoginForm">
-          <h1>LOGIN PAGE HERE</h1>
+          <Text color={"blue"} fontSize={"2xl"} borderBottom={"2px"}>
+            Login Page Here
+          </Text>
           <br />
           <FormControl isRequired>
             <FormLabel htmlFor="email">Email</FormLabel>
-            <Field type="email" name="email" placeholder="Email" as={Input} />
+            <Field
+              id="email"
+              type="email"
+              name="email"
+              placeholder="Email"
+              as={Input}
+            />
             <ErrorMessage
               name="email"
               component="div"
@@ -64,6 +102,7 @@ function Login() {
             <Field
               type="password"
               name="password"
+              id="password"
               placeholder="Password"
               as={Input}
             />
@@ -74,7 +113,8 @@ function Login() {
             />
             <br />
             <Button
-              mt={4}
+              mt={8}
+              w={"100%"}
               colorScheme="blue"
               isLoading={isSubmitting}
               type="submit">

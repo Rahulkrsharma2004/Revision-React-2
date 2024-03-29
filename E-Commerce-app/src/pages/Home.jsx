@@ -1,20 +1,10 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../context/AuthContextProvider";
+import React from "react";
 import { Heading } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const state = useContext(AuthContext);
-  const navigate = useNavigate()
- 
-  const handleClick = () => {
-    navigate("/products")
-  }
 
   return (
-    <div style={{margin:"20px"}}>
-      <Heading>WELCOME IN HOME PAGE</Heading>
-    </div>
+      <Heading textAlign={"center"} m={"2rem"}>WELCOME IN HOME PAGE !!😊😊</Heading>
   );
 };
 
