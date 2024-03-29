@@ -1,0 +1,13 @@
+.LoginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  margin: 3rem auto;
+  background-color: rgba(219, 254, 255, 0.269);
+  border-radius: 5px;
+  padding: 50px;
+}
+.error-message {
+    color: red; 
+  }
