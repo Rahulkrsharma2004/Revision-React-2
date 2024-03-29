@@ -84,7 +84,7 @@ function Login() {
           </Text>
           <br />
           <FormControl isRequired>
-            <FormLabel htmlFor="email">Email</FormLabel>
+            <FormLabel htmlFor="email">Use Reqres Email</FormLabel>
             <Field
               id="email"
               type="email"
