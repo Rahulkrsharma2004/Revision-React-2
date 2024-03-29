@@ -3,7 +3,7 @@ export const AuthContext = createContext();
 const AuthContextProvider = ({ children }) => {
   const [authState, setAuthState] = React.useState({
     token: null,
-    isAuth: false,
+    isAuth: true,
   });
 
   const login = (token) => {
