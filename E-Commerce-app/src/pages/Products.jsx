@@ -15,6 +15,7 @@ const Products = () => {
   const [products, setProducts] = React.useState([]);
   const [category, setCategory] = React.useState("");
   const [price, setPrice] = React.useState("");
+  const [rating, setRating] = React.useState("");
   const navigate = useNavigate();
   const getProducts = async () => {
     try {
@@ -25,11 +26,20 @@ const Products = () => {
       const res = await axios.get(URL);
       let sortedProducts = res.data;
 
-      if (price === "low") {
+      if (price === "lowPrice") {
         sortedProducts = res.data.slice().sort((a, b) => a.price - b.price);
         setProducts(sortedProducts)
-      } else if (price === "high") {
+      }
+       else if (price === "highPrice") {
         sortedProducts = res.data.slice().sort((a, b) => b.price - a.price);
+        setProducts(sortedProducts);
+      }
+      else if (rating === "lowRate") {
+        sortedProducts = res.data.slice().sort((a, b) => a.rating.rate - b.rating.rate);
+        setProducts(sortedProducts);
+      }
+      else if (rating === "highRate") {
+        sortedProducts = res.data.slice().sort((a, b) => b.rating.rate - a.rating.rate);
         setProducts(sortedProducts);
       }
       else{
@@ -52,10 +62,13 @@ const Products = () => {
     setPrice(event.target.value);
   };
 
+  const handleRatingChange = (event) =>{
+    setRating(event.target.value);
+  }
+
   useEffect(() => {
     getProducts();
-    console.log(price);
-  }, [category, price]);
+  }, [category, price,rating]);
 
   return (
     <>
@@ -85,13 +98,12 @@ const Products = () => {
             ml={5}
             mb={10}
             width={200}>
-            <option value="low">Low Price</option>
-            <option value="high">High Price</option>
+            <option value="lowPrice">Low to High</option>
+            <option value="highPrice">High to Low</option>
           </Select>
-          <Select placeholder="Sort By Rating" ml={5} mb={10} width={200}>
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
+          <Select placeholder="Sort By Rating" value={rating} onChange={handleRatingChange} ml={5} mb={10} width={200}>
+            <option value="lowRate">Low to High Rating</option>
+            <option value="highRate">High to Low Rating</option>
           </Select>
         </Box>
       </Flex>
