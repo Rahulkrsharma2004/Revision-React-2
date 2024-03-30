@@ -33,6 +33,7 @@ function Login() {
           status: "success",
           duration: 5000,
           isClosable: true,
+          position:"top",
         });
         navigate("/");
         setIsAuth(!isAuth);
@@ -44,6 +45,7 @@ function Login() {
           status: "error",
           duration: 5000,
           isClosable: true,
+          position:"top",
         });
       }
     } catch (error) {
@@ -54,6 +56,7 @@ function Login() {
         status: "error",
         duration: 5000,
         isClosable: true,
+        position:"top",
       });
     }
     setSubmitting(false);
