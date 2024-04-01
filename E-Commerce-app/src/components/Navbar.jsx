@@ -25,7 +25,10 @@ const Navbar = () => {
       m={"auto"}
       bg={"black"}
       justifyContent={"space-around"}
-      padding={"15px"}>
+      padding={"15px"}
+      position={"fixed"}
+      top={"0"}
+      zIndex={"999"}>
       <Text
         color={"white"}
         p={"3px 10px"}

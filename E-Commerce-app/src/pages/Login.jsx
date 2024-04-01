@@ -7,11 +7,12 @@ import {
   Button,
   useToast,
   Text,
-} from "@chakra-ui/react"; // Assuming you're using Chakra UI for styling
+} from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContextProvider";
+
 
 function Login() {
   
@@ -38,6 +39,7 @@ function Login() {
         navigate("/");
         setIsAuth(!isAuth);
         localStorage.setItem("token", response.data.token);
+        localStorage.setItem("setIsAuth", true);
       } else {
         toast({
           title: "Login Failed",
@@ -92,7 +94,7 @@ function Login() {
               id="email"
               type="email"
               name="email"
-              placeholder="Email"
+              placeholder="eve.holt@reqres.in"
               as={Input}
             />
             <ErrorMessage

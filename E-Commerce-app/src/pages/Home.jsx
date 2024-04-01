@@ -4,7 +4,7 @@ import { Heading } from "@chakra-ui/react";
 const Home = () => {
 
   return (
-      <Heading textAlign={"center"} m={"2rem"}>WELCOME IN HOME PAGE !!😊😊</Heading>
+      <Heading textAlign={"center"} mt={"6rem"}>WELCOME IN HOME PAGE !!😊😊</Heading>
   );
 };
 
