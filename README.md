@@ -37,13 +37,14 @@ This is mini Project like E-Commerce Website.It is made by frontend with Chakra-
 ## Features
 
 - **Home Page:** Displays various categories, featured products, and promotional banners.
+- **Login Page:** you can login with reqres.api and password.
+- **Logout Page:** direct you can logout with toast alert.
 - **Product Listing:** Allows users to browse products by category with filters and sorting options.
 - **Product Details:** Provides detailed information about a selected product, including images, price, and description.
-- **Search Functionality:** Users can search for products by name or category.
+- **sorting Functionality:** Users can sort by price or category.
+- **filtering Functionality:** Users can filter for products by name or category.
 - **Cart Management:** Users can add products to the cart, view cart items, and remove items from the cart.
 - **User Authentication:** Sign up, log in, and log out functionality.
-- **Profile Management:** Users can view and update their profile information.
-- **Order Management:** Users can view their order history and order details.
 - **Responsive Design:** The application is fully responsive and works well on all devices.
 
 ## Tech Stack
