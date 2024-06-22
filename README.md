@@ -3,24 +3,22 @@
 ## Folder Structure
     ├── public
     ├── src
-    │   ├── Images
+    │   ├── assets
     │   ├── Components
-    ├        ├── BlogCart.jsx
-    ├        ├── Footer.jsx
-    ├        ├── Navbar.jsx
-    ├        ├── Loader.jsx
-    ├        ├── Project.jsx
-    ├        ├── Sidebar.jsx
-    │   ├── Pages
-    ├        ├── Blog.jsx
-    ├        ├── Signup.jsx
-    ├        ├── Login.jsx
-    ├        ├── Home.jsx
-    ├        ├── Dashboard.jsx
-    │   ├── Redux
-    ├        ├── Auth.jsx
-    │   ├── Routes
     ├        ├── AllRoutes.jsx
+    ├        ├── Navbar.jsx
+    │   ├── Pages
+    ├        ├── Home.jsx
+    ├        ├── Login.jsx
+    ├        ├── Login.css
+    ├        ├── SingleProducts.jsx
+    ├        ├── Products.jsx
+    │   ├── Context
+    ├        ├── AuthContextProvider.jsx
+    │   ├── App.jsx
+    │   ├── App.css
+    │   ├── main.jsx
+    │   ├── index.css
     ├── gitignore
     ├── index.html
     ├── package-lock.json
@@ -75,5 +73,5 @@ Follow these steps to set up the project locally:
 
    ```sh
    git clone https://github.com/Rahulkrsharma2004/Revision-React-2.git
-   cd Revision-React-2
+   cd Revision-React-2/E-Commerce-App
    npm run start
